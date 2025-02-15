@@ -1,0 +1,60 @@
+# Install required packages (Run only if not installed)
+install.packages("tidyverse")  
+install.packages("ggplot2")    
+
+# Load libraries
+library(tidyverse)
+library(ggplot2)
+
+# Create Sales Dataset
+sales_data <- data.frame(
+  Month = rep(1:12, 9),  
+  Region = rep(c("North", "South", "East"), each = 36),
+  Product = rep(rep(c("Smartphones", "Laptops", "Accessories"), each = 12), 3),
+  Sales = c(
+    50, 65, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160,
+    40, 48, 55, 60, 65, 75, 85, 90, 100, 110, 120, 130,
+    30, 34, 38, 42, 50, 55, 60, 70, 75, 80, 85, 90,
+
+    60, 70, 75, 85, 95, 105, 115, 125, 135, 145, 155, 165,
+    45, 50, 58, 65, 70, 80, 90, 100, 110, 115, 125, 135,
+    35, 38, 42, 45, 55, 60, 65, 75, 80, 85, 90, 95,
+
+    55, 68, 72, 82, 92, 102, 112, 122, 132, 142, 152, 162,
+    42, 49, 53, 62, 67, 78, 88, 95, 105, 112, 122, 132,
+    32, 36, 40, 44, 52, 58, 63, 72, 78, 82, 87, 92
+  )
+)
+
+# Display first few rows
+print("Sample Data:")
+print(head(sales_data))
+
+# Calculate Total Revenue
+total_revenue <- sum(sales_data$Sales)
+print(paste("Total Revenue:", total_revenue, "thousands of dollars"))
+
+# Monthly Sales Trend Plot
+ggplot(sales_data, aes(x = Month, y = Sales, color = Product, group = Product)) +
+  geom_line(size = 1) +
+  geom_point() +
+  labs(title = "Monthly Sales Trend", x = "Month", y = "Sales ($000s)") +
+  theme_minimal()
+
+# Compute Regional Growth Rate
+regional_growth <- sales_data %>%
+  group_by(Region) %>%
+  summarize(
+    Start_Sales = sum(Sales[Month == 1]),
+    End_Sales = sum(Sales[Month == 12]),
+    Growth_Rate = ((End_Sales - Start_Sales) / Start_Sales) * 100
+  )
+
+print("Regional Growth Rate:")
+print(regional_growth)
+
+# Plot Regional Growth
+ggplot(regional_growth, aes(x = Region, y = Growth_Rate, fill = Region)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Regional Growth Rate", x = "Region", y = "Growth (%)") +
+  theme_minimal()
