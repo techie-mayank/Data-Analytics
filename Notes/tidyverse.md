@@ -1,10 +1,12 @@
+[[Main]](/../../ReadMe.md) | [[Back]](./ReadMe.md)
+
 # Learning the Tidyverse: A Comprehensive Guide
 
 The **Tidyverse** is a collection of R packages designed to make data science easier. This guide covers the core and supporting packages in Tidyverse, providing key functions and learning steps for each.
 
-## 📌 Core Tidyverse Packages
+## Core Tidyverse Packages
 
-### 1. ggplot2 (Data Visualization)
+### 1. ggplot2 (Data Visualization) [[More]](./ggplot2.md)
 **Key Functions:**
 - `ggplot() + geom_*()` – Create plots with layers
 - `aes()` – Aesthetics mapping
@@ -107,7 +109,7 @@ The **Tidyverse** is a collection of R packages designed to make data science ea
 - Reordering factor levels dynamically
 
 ---
-## 📌 Supporting Packages
+## Supporting Packages
 
 ### 9. lubridate (Date & Time Handling)
 **Key Functions:**
@@ -175,7 +177,7 @@ The **Tidyverse** is a collection of R packages designed to make data science ea
 - Efficient string formatting
 
 ---
-## 📌 Learning Path
+## Learning Path
 
 1. **Start with dplyr** – Practice filtering, selecting, and summarizing data.
 2. **Move to ggplot2** – Learn basic and advanced plotting techniques.
@@ -186,4 +188,3 @@ The **Tidyverse** is a collection of R packages designed to make data science ea
 7. **Delve into lubridate** – Handle dates and times effectively.
 8. **Experiment with other packages** – Use advanced features as needed.
 
-Happy Coding! 🚀
